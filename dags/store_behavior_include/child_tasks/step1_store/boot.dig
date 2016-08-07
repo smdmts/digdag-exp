@@ -1,0 +1,7 @@
+timezone: UTC
+
++store:
+  py>: tasks.Step1Store.call_store
+
++check:
+  sh>: echo stored_parameter is ${this.parameter}
