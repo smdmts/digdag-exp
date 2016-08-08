@@ -6,11 +6,11 @@ timezone: UTC
 +step1_store:
   !include : 'child_tasks/step1_store/boot.dig'
 
-#+step2_modify:
-#  !include : 'child_tasks/step2_modify/boot.dig'
-#
-#+step3_check:
-#  !include : 'child_tasks/step3_check/boot.dig'
++step2_modify:
+  !include : 'child_tasks/step2_modify/boot.dig'
+
++step3_check:
+  !include : 'child_tasks/step3_check/boot.dig'
 
 +check:
-  sh>: echo ${this.parameter}
+  sh>: echo parent_dig of stored parameter is ${this.parameter}
