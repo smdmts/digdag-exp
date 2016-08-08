@@ -1,0 +1,7 @@
+timezone: UTC
+
++check_py:
+  py>: tasks.Step3Check.check
+
++check_sh:
+  sh>: echo stored_parameter is ${this.parameter}

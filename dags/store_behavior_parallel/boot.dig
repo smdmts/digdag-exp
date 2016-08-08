@@ -1,0 +1,25 @@
+timezone: UTC
+
++prepare:
+  py>: tasks.prepare
+
++show_before:
+  sh>: echo ${this.parameter}
+
++overwrite_parameter_parallel:
+  loop>: ${this.parameter.length}
+  _parallel: true
+  _do:
+    +make:
+      py>: tasks.make_parameter
+    +check:
+      sh>: echo ${this.parameter_in_method}
+    +overwrite:
+      py>: tasks.overwrite
+    +make_overwrite:
+      py>: tasks.make_parameter
+    +check_overwrite:
+      sh>: echo ${this.parameter_in_method}
+
++show_after:
+  sh>: echo ${this.parameter}
