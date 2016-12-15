@@ -1,0 +1,35 @@
+timezone: UTC
+
+_export:
+  my_params:
+    a: exported
+    b: 1
+
++env1:
+  sh>: echo $aaa
+  _env:
+    aaa: ${my_params.a}
+
+# excepted '_env': {'aaa': 'abc'}
++env2:
+  _export:
+    my_params2:
+      a: abc
+  py>: tasks.MyWorkflow.step1
+  _env:
+    aaa: ${my_params2.a}
+
+# excepted '_env': {'aaa': 'efg'}
++env3:
+  _export:
+    my_params2:
+      a: efg
+  py>: tasks.MyWorkflow.step1
+  _env:
+    aaa: ${my_params2.a}
+
+# error occurs
++env4:
+  py>: tasks.MyWorkflow.step1
+  _env:
+    aaa: ${my_params2.a}
